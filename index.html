@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo SENAI Campo Largo | Reserva de Equipamentos</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        senai: {
+                            blue: '#00529C',
+                            darkblue: '#00386B',
+                            orange: '#FF6B00',
+                            red: '#E30613'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-50 min-h-screen text-slate-800 flex flex-col justify-between font-sans">
+
+    <div>
+        <!-- CABEÇALHO -->
+        <header class="bg-senai-blue text-white shadow-md border-b-4 border-senai-orange">
+            <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-4 text-center sm:text-left">
+                    <div class="bg-white text-senai-blue px-3.5 py-2 rounded-xl shadow-inner font-black text-2xl tracking-tighter">
+                        SENAI
+                    </div>
+                    <div>
+                        <h1 class="text-xl sm:text-2xl font-extrabold leading-tight">Reserva de Equipamentos</h1>
+                        <p class="text-xs text-blue-100 flex items-center justify-center sm:justify-start gap-2 mt-0.5">
+                            <span><i class="fa-solid fa-laptop text-amber-300"></i> Notebooks & TVs</span>
+                            <span>•</span>
+                            <span>Mundo SENAI Campo Largo</span>
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <a href="admin.html" class="bg-amber-500 hover:bg-amber-600 text-white text-xs px-4 py-2.5 rounded-xl font-bold transition flex items-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-user-shield"></i> Painel Administrativo
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- FORMULÁRIO DE RESERVA -->
+            <section class="lg:col-span-5 bg-white rounded-2xl shadow-xl border border-slate-200 p-6 self-start space-y-6">
+                <div class="border-b border-slate-100 pb-4">
+                    <h2 class="text-lg font-extrabold text-slate-800 flex items-center gap-2.5">
+                        <i class="fa-solid fa-calendar-plus text-senai-blue"></i>
+                        Solicitar Equipamento
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">Preencha os dados abaixo para reservar um item disponível.</p>
+                </div>
+
+                <form id="formReserva" class="space-y-4">
+                    <!-- Nome do Professor -->
+                    <div>
+                        <label for="nomeProfessor" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">1. Nome do Professor</label>
+                        <input type="text" id="nomeProfessor" required placeholder="Digite seu nome completo..." class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-xl focus:ring-2 focus:ring-senai-blue p-3 font-semibold outline-none">
+                    </div>
+
+                    <!-- Período / Turno -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">2. Período da Aula</label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="periodoReserva" value="Manhã" class="peer hidden" checked>
+                                <div class="p-2.5 text-center rounded-xl border-2 border-slate-200 peer-checked:border-senai-blue peer-checked:bg-blue-50/50 peer-checked:text-senai-blue font-bold text-xs transition-all hover:bg-slate-50">
+                                    <i class="fa-solid fa-sun text-amber-500 block mb-1"></i> Manhã
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="periodoReserva" value="Tarde" class="peer hidden">
+                                <div class="p-2.5 text-center rounded-xl border-2 border-slate-200 peer-checked:border-senai-blue peer-checked:bg-blue-50/50 peer-checked:text-senai-blue font-bold text-xs transition-all hover:bg-slate-50">
+                                    <i class="fa-solid fa-cloud-sun text-indigo-500 block mb-1"></i> Tarde
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="periodoReserva" value="Noite" class="peer hidden">
+                                <div class="p-2.5 text-center rounded-xl border-2 border-slate-200 peer-checked:border-senai-blue peer-checked:bg-blue-50/50 peer-checked:text-senai-blue font-bold text-xs transition-all hover:bg-slate-50">
+                                    <i class="fa-solid fa-moon text-slate-700 block mb-1"></i> Noite
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Data da Reserva -->
+                    <div>
+                        <label for="dataReserva" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">3. Data do Empréstimo</label>
+                        <input type="date" id="dataReserva" required class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-xl focus:ring-2 focus:ring-senai-blue p-3 font-semibold outline-none">
+                    </div>
+
+                    <!-- Tipo de Equipamento -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">4. Tipo de Equipamento</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="tipoEquipamento" value="Notebook" class="peer hidden" checked>
+                                <div class="p-3 text-center rounded-xl border-2 border-slate-200 peer-checked:border-senai-blue peer-checked:bg-blue-50 peer-checked:text-senai-blue font-bold text-sm transition-all hover:bg-slate-50">
+                                    <i class="fa-solid fa-laptop text-base mb-1 block"></i> Notebook
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="tipoEquipamento" value="Televisor" class="peer hidden">
+                                <div class="p-3 text-center rounded-xl border-2 border-slate-200 peer-checked:border-senai-blue peer-checked:bg-blue-50 peer-checked:text-senai-blue font-bold text-sm transition-all hover:bg-slate-50">
+                                    <i class="fa-solid fa-tv text-base mb-1 block"></i> Televisor
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Item Específico Disponível -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label for="selectItem" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">5. Selecione o Item Disponível</label>
+                            <span id="badgeDisponiveis" class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">Carregando...</span>
+                        </div>
+                        <select id="selectItem" required class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-xl focus:ring-2 focus:ring-senai-blue p-3 font-semibold outline-none appearance-none cursor-pointer">
+                            <option value="">Aguarde o carregamento...</option>
+                        </select>
+                    </div>
+
+                    <!-- Botão de Reserva -->
+                    <button type="submit" id="btnReservar" class="w-full bg-senai-blue hover:bg-senai-darkblue text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition-all duration-200 text-sm flex items-center justify-center gap-2 mt-4">
+                        <i class="fa-solid fa-check-circle"></i> Confirmar Reserva
+                    </button>
+                </form>
+
+                <div id="statusReserva" class="hidden p-4 rounded-xl text-xs flex items-center gap-2"></div>
+            </section>
+
+            <!-- CONSULTA PÚBLICA -->
+            <section class="lg:col-span-7 space-y-6">
+
+                <!-- Barra de Filtro de Busca -->
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-col sm:flex-row gap-3 items-center justify-between">
+                    <div class="relative w-full sm:w-64">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="buscaProfessor" placeholder="Buscar por professor..." class="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-senai-blue">
+                    </div>
+                    <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                        <input type="date" id="filtroDataGeral" class="text-xs bg-slate-50 border border-slate-200 rounded-xl p-2 font-bold text-slate-700 outline-none">
+                    </div>
+                </div>
+
+                <!-- Lista de Reservas -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="bg-slate-900 text-white p-4 flex justify-between items-center border-b border-slate-800">
+                        <span class="text-xs font-extrabold uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-senai-orange"></i> Agendamentos Confirmados
+                        </span>
+                        <span id="badgeTotalReservas" class="bg-senai-orange text-white text-xs px-2.5 py-0.5 rounded-full font-bold">0</span>
+                    </div>
+                    <div id="containerReservas" class="p-4 space-y-3 max-h-[480px] overflow-y-auto custom-scrollbar">
+                        <!-- Renderizado via JS -->
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 text-center space-y-1">
+            <p class="font-bold text-slate-300 text-sm">SENAI Campo Largo — Sistema de Reservas</p>
+            <p class="text-xs">Desenvolvido para apoio à equipe pedagógica e de gestão docente</p>
+        </div>
+    </footer>
+
+    <!-- JS MÓDULO -->
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
